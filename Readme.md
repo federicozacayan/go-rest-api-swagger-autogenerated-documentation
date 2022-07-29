@@ -38,7 +38,7 @@ http://localhost:3333/swagger.yaml
 
 ## Video tutorial (Mac version)
 
-Duracion 46:34
+Duration 46:34
 
 ```
 https://www.youtube.com/watch?v=07XhTqE-j8k&ab_channel=NicJackson
