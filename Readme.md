@@ -1,6 +1,6 @@
 # About this project
 
-This is a tiny project that pretends to provide an easy approach to getting an Resftull API documented following openAPI Initiative.
+This is a tiny project that pretends to provide an easy approach to getting an documented RestFul API following openAPI Initiative.
 
 ## Official installation documentation
 

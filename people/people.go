@@ -2,7 +2,7 @@
 //
 // Documentation for **Person Resftull API**.
 //
-// This is a tiny project that pretends to provide an easy approach to getting an Resftull API documented following **openAPI Initiative**.
+// This is a tiny project that pretends to provide an easy approach to getting an documented RestFul API following **openAPI Initiative**.
 //
 // More information about **Person API** can be found here: https://www.openapis.org/about
 //
