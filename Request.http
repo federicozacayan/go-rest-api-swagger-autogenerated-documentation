@@ -1,0 +1,34 @@
+
+GET http://localhost:3333/people HTTP/1.1
+
+###
+GET http://localhost:3333/people/1 HTTP/1.1
+Access: 1234
+
+###
+POST http://localhost:3333/people/3 HTTP/1.1
+Access: 1234
+content-type: application/json
+
+{
+    "id":"3",
+    "firstname":"Donnal",
+    "lastname":"trump",
+    "addres":{
+        "city":"City X",
+        "state":"State X"
+    }
+}
+
+###
+GET http://localhost:3333/people/3 HTTP/1.1
+Access: 1234
+###
+GET http://localhost:3333/people HTTP/1.1
+Access: 1234
+###
+DELETE http://localhost:3333/people/3 HTTP/1.1
+Access: 1234
+###
+GET http://localhost:3333/people HTTP/1.1
+Access: 1234

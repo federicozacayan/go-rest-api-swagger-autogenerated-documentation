@@ -1,0 +1,167 @@
+basePath: /
+consumes:
+- application/json
+definitions:
+  Address:
+    properties:
+      city:
+        description: City name
+        type: string
+        x-go-name: City
+      state:
+        description: State name
+        type: string
+        x-go-name: State
+    type: object
+    x-go-package: people-swagger/people
+  Person:
+    properties:
+      addres:
+        $ref: '#/definitions/Address'
+      firstname:
+        description: First name
+        type: string
+        x-go-name: FirstName
+      id:
+        description: Identifier
+        type: string
+        x-go-name: Id
+      lastname:
+        description: Last name
+        type: string
+        x-go-name: LastName
+    required:
+    - id
+    - firstname
+    - lastname
+    type: object
+    x-go-package: people-swagger/people
+info:
+  description: |-
+    Documentation for **Person Resftull API**.
+
+    This is a tiny project that pretends to provide an easy approach to getting an Resftull API documented following **openAPI Initiative**.
+
+    More information about **Person API** can be found here: https://www.openapis.org/about
+
+    ### Usage
+
+    Scroll doown to see the diferent endpoints or search them in the top left searching box of this website.
+  title: People API.
+  version: 0.0.1
+paths:
+  /people:
+    get:
+      description: Returns a list of people
+      operationId: GetPeople
+      responses:
+        "200":
+          $ref: '#/responses/peopleResponse'
+        "401":
+          $ref: '#/responses/unauthorizedError'
+        "500":
+          $ref: '#/responses/internalServerError'
+      tags:
+      - Person
+    post:
+      description: Create person from the database
+      operationId: CreatePerson
+      parameters:
+      - description: The id of the person to delete
+        format: int64
+        in: path
+        name: id
+        required: true
+        type: integer
+        x-go-name: Id
+      - description: A json that represents a person
+        in: body
+        name: person
+        required: true
+        schema:
+          $ref: '#/definitions/Person'
+          description: A json that represents a person
+          type: object
+      responses:
+        "201":
+          $ref: '#/responses/personCreatedResponse'
+        "401":
+          $ref: '#/responses/unauthorizedError'
+        "500":
+          $ref: '#/responses/internalServerError'
+      tags:
+      - Person
+  /people/{id}:
+    delete:
+      description: Delete person from the database
+      operationId: DeletePerson
+      parameters:
+      - description: The id of the person to delete
+        format: int64
+        in: path
+        name: id
+        required: true
+        type: integer
+        x-go-name: Id
+      responses:
+        "202":
+          $ref: '#/responses/acceptedResponse'
+        "401":
+          $ref: '#/responses/unauthorizedError'
+        "500":
+          $ref: '#/responses/internalServerError'
+      tags:
+      - Person
+    get:
+      description: Returns a Person
+      operationId: GetPerson
+      parameters:
+      - description: The id of the person to delete
+        format: int64
+        in: path
+        name: id
+        required: true
+        type: integer
+        x-go-name: Id
+      responses:
+        "200":
+          $ref: '#/responses/personResponse'
+        "401":
+          $ref: '#/responses/unauthorizedError'
+        "500":
+          $ref: '#/responses/internalServerError'
+      tags:
+      - Person
+produces:
+- application/json
+responses:
+  acceptedResponse:
+    description: Accepted
+  internalServerError:
+    description: Internal Server Error
+  peopleResponse:
+    description: OK
+    schema:
+      items:
+        $ref: '#/definitions/Person'
+      type: array
+  personCreatedResponse:
+    description: Created
+    schema:
+      $ref: '#/definitions/Person'
+  personResponse:
+    description: OK
+    schema:
+      $ref: '#/definitions/Person'
+  unauthorizedError:
+    description: Unauthorized
+schemes:
+- http
+security:
+- api_key: []
+securityDefinitions:
+  api_key:
+    in: header
+    name: Access
+    type: apiKey
+swagger: "2.0"
